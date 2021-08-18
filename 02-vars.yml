@@ -45,3 +45,14 @@
     - name: Print fact
       debug:
         msg: Python Version = {{ ansible_python_version }}
+
+- name: Register a variable
+  hosts: all
+  tasks:
+    - name: Grab howmany users are logged in
+      shell: who  | wc -l
+      register: out
+
+    - name: Print Out
+      debug:
+        msg: Output = {{ out }}
