@@ -55,4 +55,4 @@
 
     - name: Print Out
       debug:
-        msg: Output = {{ out }}
+        msg: Number of User Logged in = {{ out }}
