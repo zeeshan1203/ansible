@@ -9,3 +9,17 @@
     name: nginx
     enabled: yes
 
+- name: Download Package from GitHub
+  get_url:
+    url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp/frontend.zip
+
+- name: Remove old htdocs directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
+
+- name: Extract Package
+  ansible.builtin.unarchive:
+    src: /tmp/frontend.zip
+    dest: /usr/share/nginx
