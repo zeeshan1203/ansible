@@ -19,3 +19,9 @@
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /usr/share/nginx
     remote_src: yes
+
+- name: Copy Extracted Directory
+  ansible.builtin.copy:
+    src: /usr/share/nginx/frontend-main
+    dest: /usr/share/nginx/html
+    remote_src: yes
