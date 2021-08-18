@@ -5,3 +5,6 @@
 - name: Print URL
   debug:
     msg: URL = {{ URL }}
+
+- name: Load Sample
+  include_tasks: sample.yml
