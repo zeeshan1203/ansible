@@ -4,3 +4,10 @@
   roles:
     - name: Load Frontend Role
       role: frontend
+
+- name: Setup roboshop project
+  hosts: MONGODB
+  become: yes
+  roles:
+    - name: Load Frontend Role
+      role: mongodb
