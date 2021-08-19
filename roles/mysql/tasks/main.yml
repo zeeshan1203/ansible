@@ -1,3 +1,32 @@
-- name: Print Component Name
-  debug:
-    msg: Component = MySQL
+- name: Add MySQL repository
+  yum_repository:
+    name: MySQL
+    description: MySQL Repository
+    baseurl: http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/
+    enabled: yes
+    gpgcheck: no
+    file: mysql
+
+- name: Remove MariaDB Libraries
+  yum:
+    name: mariadb-libs
+    state: absent
+
+- name: Install MySQL Server
+  yum:
+    name: mysql-community-server
+    state: present
+
+- name: Start MySQL Service
+  systemd:
+    name: mysqld
+    state: started
+    enabled: yes
+
+#- name: Grabbing Default Password
+#  lineinfile:
+#    path: /var/log/mysql
+#    line: "LogLevel debug"
+#    state: present
+#  check_mode: yes
+#  register: presence
