@@ -17,4 +17,4 @@
     tasks_from: download-from-github
   vars:
     APP_DIR: /home/roboshop/catalogue
-    EXTRACT_DIR: /home/Roboshop
+    EXTRACT_DIR: /home/roboshop
