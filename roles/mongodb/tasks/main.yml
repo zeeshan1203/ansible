@@ -37,6 +37,6 @@
     EXTRACT_DIR: /tmp
 
 - name: Load Schema
-  community.mongodb.mongodb_shell:
+  community.general.mongodb_shell:
     file: "/tmp/mongodb-main/users.js"
     idempotent: yes
