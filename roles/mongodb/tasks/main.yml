@@ -14,12 +14,13 @@
     state: present
 
 - name: Update MongoDB Listen Address
-  notify:
-    - Restart MongoDB
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
+  notify:
+    - Restart MongoDB
+
 ## Handlers will run at ending of the play
 
 - name: Start MongoDB service
