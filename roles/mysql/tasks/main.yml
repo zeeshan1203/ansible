@@ -24,13 +24,10 @@
     enabled: yes
 
 - name: Grabbing Default Password
-  lineinfile:
-    path: /var/log/mysqld.log
-    line: "A temporary password"
-    state: present
-  check_mode: yes
-  register: presence
+  shell: grep "A temporary password" /var/log/mysqld.log | awk '{print $NF}'
+  register: MYSQL_DEFAULT_PASSWORD
 
 - name: debug
   debug:
-    msg: "{{presence}}"
+    msg: "{{MYSQL_DEFAULT_PASSWORD}}"
+
