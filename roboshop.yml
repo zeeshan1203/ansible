@@ -51,3 +51,39 @@
   roles:
     - name: Load Cart Role
       role: cart
+
+- name: Setup roboshop project -- MySQL Component
+  hosts: MYSQL
+  become: yes
+  tags:
+    - mysql
+  roles:
+    - name: Load MySQL Role
+      role: mysql
+
+- name: Setup roboshop project -- Shipping Component
+  hosts: SHIPPING
+  become: yes
+  tags:
+    - shipping
+  roles:
+    - name: Load Shipping Role
+      role: shipping
+
+- name: Setup roboshop project -- RabbitMQ Component
+  hosts: RABBITMQ
+  become: yes
+  tags:
+    - rabbitmq
+  roles:
+    - name: Load RabbitMQ Role
+      role: rabbitmq
+
+- name: Setup roboshop project -- Payment Component
+  hosts: PAYMENT
+  become: yes
+  tags:
+    - payment
+  roles:
+    - name: Load Payment Role
+      role: payment
