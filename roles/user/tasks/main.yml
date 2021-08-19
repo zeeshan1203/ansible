@@ -1,3 +1,4 @@
-- name: Print Component Name
-  debug:
-    msg: Component = User
+- name: Setup User
+  include_role:
+    name: common
+    tasks_from: nodejs
