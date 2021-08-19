@@ -11,7 +11,6 @@
     APP_DIR: /usr/share/nginx/html
     EXTRACT_DIR: /usr/share/nginx
 
-
 - name: Copy Extracted Directory
   ansible.builtin.copy:
     src: /usr/share/nginx/frontend-main/static/
@@ -28,4 +27,3 @@
     state: restarted
     name: nginx
     enabled: yes
-
