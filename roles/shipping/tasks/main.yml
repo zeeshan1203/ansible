@@ -1,3 +1,4 @@
-- name: Print Component Name
-  debug:
-    msg: Component = Shipping
+- name: Setup Shipping
+  include_role:
+    name: common
+    tasks_from: java
