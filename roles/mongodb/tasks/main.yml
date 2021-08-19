@@ -28,3 +28,12 @@
     enabled: yes
     state: started
 
+- name: Download Package
+  include_role:
+    name: common
+    tasks_from: download-from-github
+  vars:
+    APP_DIR: /tmp/mongodb-main
+    EXTRACT_DIR: /tmp
+
+
