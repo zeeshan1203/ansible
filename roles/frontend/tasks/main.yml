@@ -3,16 +3,14 @@
     name: nginx
     state: present
 
-- name: Remove old htdocs directory
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: absent
+- name: Download Package
+  include_role:
+    name: common
+    tasks_from: download
+  vars:
+    APP_DIR: /usr/share/nginx/html
+    EXTRACT_DIR: /usr/share/nginx
 
-- name: Extract Package
-  ansible.builtin.unarchive:
-    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /usr/share/nginx
-    remote_src: yes
 
 - name: Copy Extracted Directory
   ansible.builtin.copy:
@@ -30,3 +28,4 @@
     state: restarted
     name: nginx
     enabled: yes
+
