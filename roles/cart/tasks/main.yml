@@ -1,3 +1,4 @@
-- name: Print Component Name
-  debug:
-    msg: Component = Cart
+- name: Setup Cart
+  include_role:
+    name: common
+    tasks_from: nodejs
