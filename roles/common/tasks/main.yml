@@ -1,5 +1,5 @@
 - name: Setup Hostname
-  shell: set-hostname {COMPONENT}
+  shell: set-hostname $COMPONENT
 
 - name: Disable Auto Shutdown
   shell: disable-auto-shutdown
