@@ -49,5 +49,21 @@
       shell: mysql --connect-expired-password -u root -p"{{MYSQL_DEFAULT_PASSWORD.stdout}}" < /tmp/mysql-pass-reset.sql
   when: out.failed
 
+- name: Download Package
+  include_role:
+    name: common
+    tasks_from: download-from-github
+  vars:
+    APP_DIR: /tmp/mysql-main
+    EXTRACT_DIR: /tmp
+
+- name: Load Schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target: /tmp/mysql-main/shipping.sql
+    login_user: root
+    login_password: RoboShop@1
+
 
 
