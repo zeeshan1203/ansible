@@ -1,17 +1,17 @@
-- name: Demo on tags
-  hosts: localhost
-  tasks:
-    - name: Print AWS
-      debug:
-        msg: AWS
-      tags:
-        - AWS
-
-    - name: Print AZURE
-      debug:
-        msg: AZURE
-      tags:
-        - AZURE
+#- name: Demo on tags
+#  hosts: localhost
+#  tasks:
+#    - name: Print AWS
+#      debug:
+#        msg: AWS
+#      tags:
+#        - AWS
+#
+#    - name: Print AZURE
+#      debug:
+#        msg: AZURE
+#      tags:
+#        - AZURE
 
 - name: Demo on tags
   hosts: localhost
@@ -21,3 +21,12 @@
     - name: Print AWS
       debug:
         msg: AWS
+
+- name: Demo on tags
+  hosts: localhost
+  tags:
+    - AZURE
+  tasks:
+    - name: Print AZURE
+      debug:
+        msg: AZURE
