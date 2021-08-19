@@ -1,3 +1,9 @@
-- name: Print Component Name
-  debug:
-    msg: Component = Redis
+- name: Install Redis Package to get redis repos.
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+
+- name: Install Redis
+  yum:
+    name: redis
+    state: present
