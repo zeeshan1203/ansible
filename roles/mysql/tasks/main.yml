@@ -31,3 +31,12 @@
   debug:
     msg: "{{MYSQL_DEFAULT_PASSWORD}}"
 
+- name: Set MySQL root Password
+  mysql_user:
+    login_host: 'localhost'
+    login_user: 'root'
+    login_password: "{{MYSQL_DEFAULT_PASSWORD}}"
+    name: 'root'
+    password: 'RoboShop@1'
+    state: present
+
