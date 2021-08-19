@@ -1,6 +1,8 @@
 - name: Setup roboshop project
   hosts: FRONTEND
   become: yes
+  tags:
+    - frontend
   roles:
     - name: Load Frontend Role
       role: frontend
@@ -8,6 +10,9 @@
 - name: Setup roboshop project
   hosts: MONGODB
   become: yes
+  tags:
+    - mongodb
   roles:
-    - name: Load Frontend Role
+    - name: Load MongoDb Role
       role: mongodb
+
