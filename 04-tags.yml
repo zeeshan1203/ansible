@@ -12,3 +12,12 @@
         msg: AZURE
       tags:
         - AZURE
+
+- name: Demo on tags
+  hosts: localhost
+  tags:
+    - AWS
+  tasks:
+    - name: Print AWS
+      debug:
+        msg: AWS
