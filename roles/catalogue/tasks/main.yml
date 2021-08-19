@@ -1,3 +1,20 @@
-- name: Print Component Name
-  debug:
-    msg: Component = Catalogue
+- name: Install NodeJS
+  yum:
+    name:
+      - nodejs
+      - make
+      - gcc-c++
+    state: installed
+
+- name: Add RoboShop User
+  ansible.builtin.user:
+    name: roboshop
+    comment: RoboShop Project User
+
+- name: Download Package
+  include_role:
+    name: common
+    tasks_from: download-from-github
+  vars:
+    APP_DIR: /home/roboshop/catalogue
+    EXTRACT_DIR: /home/Roboshop
