@@ -30,16 +30,13 @@
   shell: grep "A temporary password" /var/log/mysqld.log | awk '{print $NF}'
   register: MYSQL_DEFAULT_PASSWORD
 
-- name: debug
-  debug:
-    msg: "{{MYSQL_DEFAULT_PASSWORD}}"
+- name: Copy Password Reset SQL Script
+  copy:
+    src: mysql-pass-reset.sql
+    dest: /tmp/mysql-pass-reset.sql
 
 - name: Set MySQL root Password
-  mysql_user:
-    login_host: 'localhost'
-    login_user: 'root'
-    login_password: "{{MYSQL_DEFAULT_PASSWORD.stdout}}"
-    name: 'root'
-    password: 'RoboShop@1'
-    state: present
+  shell: mysql --connect-expired-password -u root -p"{{MYSQL_DEFAULT_PASSWORD.stdout}}" < /tmp/mysql-pass-reset.sql
+
+
 
