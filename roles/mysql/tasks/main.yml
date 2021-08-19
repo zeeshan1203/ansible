@@ -32,23 +32,22 @@
     login_password: RoboShop@1
     query: show databases
   register: out
+  ignore_errors: yes
 
-- name: debug
-  debug:
-    msg: "{{out}}"
+- name: Reset MySQL Password
+  block:
+    - name: Grabbing Default Password
+      shell: grep "A temporary password" /var/log/mysqld.log | awk '{print $NF}'
+      register: MYSQL_DEFAULT_PASSWORD
 
+    - name: Copy Password Reset SQL Script
+      copy:
+        src: mysql-pass-reset.sql
+        dest: /tmp/mysql-pass-reset.sql
 
-- name: Grabbing Default Password
-  shell: grep "A temporary password" /var/log/mysqld.log | awk '{print $NF}'
-  register: MYSQL_DEFAULT_PASSWORD
-
-- name: Copy Password Reset SQL Script
-  copy:
-    src: mysql-pass-reset.sql
-    dest: /tmp/mysql-pass-reset.sql
-
-- name: Set MySQL root Password
-  shell: mysql --connect-expired-password -u root -p"{{MYSQL_DEFAULT_PASSWORD.stdout}}" < /tmp/mysql-pass-reset.sql
+    - name: Set MySQL root Password
+      shell: mysql --connect-expired-password -u root -p"{{MYSQL_DEFAULT_PASSWORD.stdout}}" < /tmp/mysql-pass-reset.sql
+  when: out.failed
 
 
 
