@@ -1,0 +1,44 @@
+- name: Install Python
+  yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Add RoboShop User
+  ansible.builtin.user:
+    name: roboshop
+    comment: RoboShop Project User
+
+- name: Download Package
+  include_role:
+    name: common
+    tasks_from: download-from-github
+  vars:
+    APP_DIR: /home/roboshop/{{COMPONENT}}
+    EXTRACT_DIR: /tmp
+
+- name: Copy content to actual directory
+  copy:
+    src: /tmp/{{COMPONENT}}-main/
+    dest: /home/roboshop/{{COMPONENT}}/
+    remote_src: yes
+  become_user: roboshop
+
+- name: Install Python Dependencies
+  pip:
+    requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
+    executable: pip3
+
+- name: Copy SystemD file
+  copy:
+    src: systemd.service.txt
+    dest: /etc/systemd/system/{{COMPONENT}}.service
+
+- name: Start {{COMPONENT}} Service
+  systemd:
+    name: "{{COMPONENT}}"
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
