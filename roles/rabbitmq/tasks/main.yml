@@ -1,3 +1,29 @@
-- name: Print Component Name
-  debug:
-    msg: Component = RabbitMQ
+- name: Install ErLang
+  yum:
+    name: https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm
+    state: present
+
+- name: Download YUM Repos
+  shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+
+- name: Install RabbitMQ Server
+  yum:
+    name: rabbitmq-server
+    state: present
+
+- name: Start RabbitMQ Service
+  systemd:
+    name: rabbitmq-server
+    state: started
+    enabled: yes
+
+- name: Configure RabbitMQ User
+  community.rabbitmq.rabbitmq_user:
+    user: roboshop
+    password: roboshop123
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+    tags: ["administrator"]
