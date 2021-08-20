@@ -1,3 +1,11 @@
+- name: Clean Known Hosts entries
+  hosts: localhost
+  tasks:
+    - name: Clear Known Hosts file
+      file:
+        path: ~/.ssh/known_hosts
+        state: absent
+
 - name: Setup roboshop project -- Frontend Component
   hosts: FRONTEND
   become: yes
