@@ -1,0 +1,6 @@
+- name: Setup roboshop project -- {{COMPONENT}} Component
+  hosts: all
+  become: yes
+  roles:
+    - name: Load Role
+      role: "{{COMPONENT}}"
