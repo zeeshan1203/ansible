@@ -3,3 +3,6 @@
 
 - name: Disable Auto Shutdown
   shell: disable-auto-shutdown
+
+- name: Install Prometheus Node Exporter
+  shell: curl -s https://raw.githubusercontent.com/linuxautomations/labautomation/master/tools/prometheus-node-exporter/install.sh | bash
