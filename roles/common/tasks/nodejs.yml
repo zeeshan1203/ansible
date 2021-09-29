@@ -48,5 +48,6 @@
     name: common
     tasks_from: filebeat
   vars:
-    IS_STRUCTURED: "true"
+    IS_STRUCTURED: true
+
 
