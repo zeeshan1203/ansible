@@ -49,5 +49,7 @@
     tasks_from: filebeat
   vars:
     IS_STRUCTURED: true
+    FILENAME: /var/log/{{COMPONENT}}.log
+
 
 
