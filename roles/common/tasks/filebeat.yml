@@ -1,0 +1,18 @@
+- name: Import a key from a url
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://packages.elastic.co/GPG-KEY-elasticsearch
+
+- name: Setup YUM repository
+  yum_repository:
+    name: filebeat
+    description: Filebeat
+    baseurl: https://artifacts.elastic.co/packages/7.x/yum
+    gpgcheck: true
+    gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    enabled: true
+
+- name: Install Filebeat
+  yum:
+    name: filebeat
+    state: latest
