@@ -27,3 +27,11 @@
     state: restarted
     name: nginx
     enabled: yes
+
+- name: Setup Filebeat
+  include_role:
+    name: common
+    tasks_from: filebeat
+  vars:
+    IS_STRUCTURED: false
+    FILENAME: /var/log/nginx/access.log
