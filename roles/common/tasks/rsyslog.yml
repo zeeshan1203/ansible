@@ -1,0 +1,9 @@
+- name: Copy Rsyslog Config
+  copy:
+    src: rsyslog-roboshop.conf
+    dest: /etc/rsyslog.d/roboshop.conf
+
+- name: Restart Rsyslog
+  systemd:
+    name: rsyslog
+    state: restarted
