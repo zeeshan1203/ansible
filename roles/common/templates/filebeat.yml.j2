@@ -6,12 +6,12 @@ filebeat.inputs:
 
 {% if IS_STRUCTURED %}
 output.elasticsearch:
-  hosts: ["172.31.20.192:9200"]   ##ELK ip addr
+  hosts: ["172.31.20.192:9200"]   ##ELK private ip addr
 {% endif %}
 
 {% if not IS_STRUCTURED %}
 output.logstash:
-  hosts: ["172.31.20.192:5044"]    ##ELK ip addr
+  hosts: ["172.31.20.192:5044"]    ##ELK private ip addr
 {% endif %}
 
 
