@@ -22,11 +22,12 @@
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
-- name: Start Nignx
-  ansible.builtin.systemd:
-    state: restarted
-    name: nginx
-    enabled: yes
+#- name: Start Nignx
+#  ansible.builtin.systemd:
+#    state: restarted
+#    name: nginx
+#    enabled: yes
+
 
 - name: Setup Filebeat
   include_role:
