@@ -6,7 +6,13 @@ filebeat.inputs:
 {% endif %}
     paths:
       - {{FILENAME}}
-
+    fields:
+      component: {{COMPONENT}}
+{% if APPTYPE == "JAVA" %}
+    multiline.pattern: "^[0-9][0-9][0-9][0-9]"
+    multiline.negate: true
+    multiline.match: after
+{% endif %}
 {% if IS_STRUCTURED %}
 setup.ilm.enabled: false
 setup.template.name: "{{COMPONENT}}"
