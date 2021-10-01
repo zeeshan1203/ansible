@@ -48,3 +48,5 @@
     tasks_from: filebeat
   vars:
     IS_STRUCTURED: false
+    FILENAME: /var/log/{{COMPONENT}}.log
+    APPTYPE: JAVA
