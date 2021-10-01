@@ -13,6 +13,10 @@ filebeat.inputs:
     multiline.negate: true
     multiline.match: after
 {% endif %}
+{% if APPTYPE == "PYTHON" %}
+    include_lines: ["^\[[0-9]"]
+{% endif %}
+
 {% if IS_STRUCTURED %}
 setup.ilm.enabled: false
 setup.template.name: "{{COMPONENT}}"
