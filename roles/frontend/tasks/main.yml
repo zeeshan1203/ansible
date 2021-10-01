@@ -40,3 +40,5 @@
   vars:
     IS_STRUCTURED: false
     FILENAME: /var/log/nginx/access.log
+    APPTYPE: NGINX
+
