@@ -21,6 +21,13 @@
   copy:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
+  when: ENV is not defined
+
+- name: Update Nginx RoboShop Config
+  template:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+  when: ENV is defined
 
 - name: Update Nginx Main Config file
   copy:
