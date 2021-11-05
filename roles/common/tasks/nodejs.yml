@@ -33,8 +33,15 @@
 
 - name: Copy SystemD file
   copy:
-    src: systemd.service.txt
+    src: systemd.service
     dest: /etc/systemd/system/{{COMPONENT}}.service
+  when: ENV is not defined
+
+- name: Setup SystemD file
+  template:
+    src: systemd.service
+    dest: /etc/systemd/system/{{COMPONENT}}.service
+  when: ENV is defined
 
 - name: Start {{COMPONENT}} Service
   systemd:
