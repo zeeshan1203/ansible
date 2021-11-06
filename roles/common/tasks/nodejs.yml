@@ -31,11 +31,11 @@
     path: /home/roboshop/{{COMPONENT}}
   become_user: roboshop
 
-- name: Copy SystemD file
-  copy:
-    src: systemd.service
-    dest: /etc/systemd/system/{{COMPONENT}}.service
-  when: ENV is not defined
+#- name: Copy SystemD file
+#  copy:
+#    src: systemd.service
+#    dest: /etc/systemd/system/{{COMPONENT}}.service
+#  when: ENV is not defined
 
 - name: Setup SystemD file
   template:
