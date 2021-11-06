@@ -39,7 +39,7 @@
 
 - name: Setup SystemD file
   template:
-    src: systemd.service
+    src: systemd.service.txt
     dest: /etc/systemd/system/{{COMPONENT}}.service
   when: ENV is defined
 
