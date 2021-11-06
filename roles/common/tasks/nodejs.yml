@@ -58,7 +58,3 @@
     IS_STRUCTURED: true
     FILENAME: /var/log/{{COMPONENT}}.log
     APPTYPE: NODEJS
-
-
-
-
