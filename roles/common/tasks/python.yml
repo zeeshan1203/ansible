@@ -38,7 +38,7 @@
   when: ENV is not defined
 
 - name: Update SystemD file
-  copy:
+  template:
     src: systemd.service.txt
     dest: /etc/systemd/system/{{COMPONENT}}.service
   when: ENV is defined
