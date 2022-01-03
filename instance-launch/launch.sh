@@ -9,14 +9,14 @@ if [ -z "${COMPONENT}" ]; then
 fi
 
 LID=lt-0c749183079899d8c                    ##ur aws launch template id
-LVER=2                                      ##ur aws launch template latest version
+LVER=3                                      ##ur aws launch template latest version
 
 ## Validate If Instance is already there
 
 DNS_UPDATE() {
   PRIVATEIP=$(aws --region us-east-1 ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1 | grep -v null)
   sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATEIP}/" record.json >/tmp/record.json
-  aws route53 change-resource-record-sets --hosted-zone-id Z0455275BOCGUWER4BVO --change-batch file:///tmp/record.json | jq         ##ur route53 hosted zone id
+  aws route53 change-resource-record-sets --hosted-zone-id Z066850733D6NJMSTTFJ4 --change-batch file:///tmp/record.json | jq         ##ur route53 hosted zone id
 }
 
 INSTANCE_CREATE() {
