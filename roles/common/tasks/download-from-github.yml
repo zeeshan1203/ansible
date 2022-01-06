@@ -15,3 +15,11 @@
   community.general.npm:
     path: /home/roboshop/{{COMPONENT}}
   become_user: roboshop
+  when: APP_TYPE == "nodejs"
+
+- name: Build a Package with Maven
+  shell: mvn clean package && mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+  args:
+    chdir: /home/roboshop/{{COMPONENT}}
+  become_user: roboshop
+  when: APP_TYPE == "java"
