@@ -9,7 +9,7 @@
     name: roboshop
     comment: RoboShop Project User
 
--- name: Download Package
+- name: Download Package
    include_role:
      name: common
      tasks_from: download.yml
