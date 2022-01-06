@@ -8,12 +8,12 @@ filebeat.inputs:
       - {{FILENAME}}
     fields:
       component: {{COMPONENT}}
-{% if APPTYPE == "JAVA" %}
+{% if APP_TYPE == "JAVA" %}
     multiline.pattern: "^[0-9][0-9][0-9][0-9]"
     multiline.negate: true
     multiline.match: after
 {% endif %}
-{% if APPTYPE == "PYTHON" %}
+{% if APP_TYPE == "PYTHON" %}
     include_lines: ["^\[[0-9]"]
 {% endif %}
 
