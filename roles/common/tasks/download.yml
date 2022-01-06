@@ -18,4 +18,4 @@
     tasks_from: download-from-nexus.yml
   vars:
       APP_DIR: /home/roboshop/{{COMPONENT}}
-    when: APP_VERSION is defined
+#    when: APP_VERSION is defined
