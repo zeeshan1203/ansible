@@ -17,7 +17,6 @@
     src: /tmp/{{COMPONENT}}-main/
     dest: /usr/share/nginx/html
     remote_src: yes
-  become_user: roboshop
   when: COMPONENT == "frontend"
 
 - name: Download NodeJS Dependencies

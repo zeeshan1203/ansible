@@ -10,6 +10,7 @@
   vars:
     APP_DIR: /usr/share/nginx/html
     EXTRACT_DIR: /usr/share/nginx
+    APP_TYPE: web
 
 - name: Copy Nginx RoboShop Config
   copy:
