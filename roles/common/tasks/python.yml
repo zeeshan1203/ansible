@@ -14,7 +14,7 @@
 - name: Download Package
   include_role:
     name: common
-    tasks_from: download-from-github
+    tasks_from: download-from-github.yml
   vars:
     APP_DIR: /home/roboshop/{{COMPONENT}}
     EXTRACT_DIR: /tmp
@@ -53,7 +53,7 @@
 - name: Setup Filebeat
   include_role:
     name: common
-    tasks_from: filebeat
+    tasks_from: filebeat.yml
   vars:
     IS_STRUCTURED: false
     FILENAME: /var/log/{{COMPONENT}}.log

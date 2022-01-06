@@ -6,7 +6,7 @@
 - name: Download Packages from GitHUb
   include_role:
     name: common
-    tasks_from: download-from-github
+    tasks_from: download-from-github.yml
   vars:
     APP_DIR: /home/roboshop/{{COMPONENT}}
     EXTRACT_DIR: /tmp
@@ -15,7 +15,7 @@
 - name: Download Package from Nexus
   include_role:
     name: common
-    tasks_from: download-from-nexus
+    tasks_from: download-from-nexus.yml
   vars:
       APP_DIR: /home/roboshop/{{COMPONENT}}
     when: APP_VERSION is defined

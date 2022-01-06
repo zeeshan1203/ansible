@@ -40,7 +40,7 @@
 - name: Setup Filebeat
   include_role:
     name: common
-    tasks_from: filebeat
+    tasks_from: filebeat.yml
   vars:
     IS_STRUCTURED: true
     FILENAME: /var/log/{{COMPONENT}}.log
