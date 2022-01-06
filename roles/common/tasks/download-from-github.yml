@@ -10,6 +10,15 @@
     dest: /home/roboshop/{{COMPONENT}}/
     remote_src: yes
   become_user: roboshop
+  when: COMPONENT != "frontend"
+
+- name: Copy content to actual directory
+  copy:
+    src: /tmp/{{COMPONENT}}-main/
+    dest: /usr/share/nginx/html
+    remote_src: yes
+  become_user: roboshop
+  when: COMPONENT == "frontend"
 
 - name: Download NodeJS Dependencies
   community.general.npm:
