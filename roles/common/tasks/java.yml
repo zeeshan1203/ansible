@@ -11,13 +11,13 @@
 
 - name: Download Package
   include_role:
-     name: common
-     tasks_from: download.yml
-   vars:
-     APP_DIR: "/home/roboshop/{{COMPONENT}}"
-     APP_TYPE: java
+    name: common
+    tasks_from: download
+  vars:
+    APP_DIR: "/home/roboshop/{{COMPONENT}}"
+    APP_TYPE: java
 
- - name: Copy SystemD file
+- name: Copy SystemD file
   copy:
     src: systemd.service.txt
     dest: /etc/systemd/system/{{COMPONENT}}.service
