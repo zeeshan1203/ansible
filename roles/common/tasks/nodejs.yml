@@ -14,7 +14,7 @@
 - name: Download Package
   include_role:
     name: common
-    tasks_from: download-from-github
+    tasks_from: download
   vars:
     APP_DIR: /home/roboshop/{{COMPONENT}}
     EXTRACT_DIR: /tmp
