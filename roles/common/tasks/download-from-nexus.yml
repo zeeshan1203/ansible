@@ -4,3 +4,14 @@
     dest: /tmp/{{COMPONENT}}.zip
     url_username: admin
     url_password: sami123
+
+- name: Create Application Directory
+  file:
+    path: "{{APP_DIR}}"
+    state: directory
+
+- name: Extract Package
+  unarchive:
+    src: /tmp/{{COMPONENT}}.zip
+    dest: "{{APP_DIR}}"
+    remote_src: true

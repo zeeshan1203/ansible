@@ -17,6 +17,5 @@
     name: common
     tasks_from: download-from-nexus
   vars:
-    APP_DIR: /home/roboshop/{{COMPONENT}}
-    EXTRACT_DIR: /tmp
-  when: APP_VERSION is defined
+      APP_DIR: /home/roboshop/{{COMPONENT}}
+    when: APP_VERSION is defined
