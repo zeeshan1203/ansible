@@ -44,4 +44,4 @@
   vars:
     IS_STRUCTURED: true
     FILENAME: /var/log/{{COMPONENT}}.log
-    APP_TYPE: NODEJS
+    APPTYPE: NODEJS
