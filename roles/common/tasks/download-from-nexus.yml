@@ -1,6 +1,6 @@
 - name: Extract Package
   get_url:
-    src: http://172.31.87.229:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+    url: http://172.31.87.229:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
     dest: /tmp/{{COMPONENT}}.zip
     url_username: admin
     url_password: sami123
