@@ -9,9 +9,13 @@
   file:
     path: "{{APP_DIR}}"
     state: directory
+    owner: roboshop
+    group: roboshop
 
 - name: Extract Package
   unarchive:
     src: /tmp/{{COMPONENT}}.zip
     dest: "{{APP_DIR}}"
     remote_src: true
+    owner: roboshop
+    group: roboshop
