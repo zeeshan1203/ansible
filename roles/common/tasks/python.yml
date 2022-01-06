@@ -12,10 +12,6 @@
     comment: RoboShop Project User
   register: robouser_meta
 
-- name: Print
-  debug:
-    msg: "{{robouser_meta}}"
-
 - name: Download Package
   include_role:
     name: common
@@ -29,11 +25,17 @@
     requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
     executable: pip3
 
-- name: Update Payment Config file
+- name: Update Payment Config file - USER
   ansible.builtin.lineinfile:
     path: /home/roboshop/{{COMPONENT}}/payment.ini
     regexp: '^uid'
     line: "uid = {{robouser_meta.uid}}"
+
+- name: Update Payment Config file - GROUP
+  ansible.builtin.lineinfile:
+    path: /home/roboshop/{{COMPONENT}}/payment.ini
+    regexp: '^gid'
+    line: "gid = {{robouser_meta.group}}"
 
 - name: Copy SystemD file
   copy:
