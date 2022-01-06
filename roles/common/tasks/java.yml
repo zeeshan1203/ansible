@@ -10,7 +10,7 @@
     comment: RoboShop Project User
 
 - name: Download Package
-   include_role:
+  include_role:
      name: common
      tasks_from: download.yml
    vars:
