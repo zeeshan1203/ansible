@@ -10,6 +10,11 @@
   ansible.builtin.user:
     name: roboshop
     comment: RoboShop Project User
+  register: robouser_meta
+
+- name: Print
+  debug:
+    msg: "{{robouser_meta}}"
 
 - name: Download Package
   include_role:
