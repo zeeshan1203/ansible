@@ -8,7 +8,6 @@
     name: common
     tasks_from: download-from-github.yml
   vars:
-    APP_DIR: /home/roboshop/{{COMPONENT}}
     EXTRACT_DIR: /tmp
   when: APP_VERSION is not defined
 
@@ -16,6 +15,4 @@
   include_role:
     name: common
     tasks_from: download-from-nexus.yml
-  vars:
-      APP_DIR: /home/roboshop/{{COMPONENT}}
-    when: APP_VERSION is defined
+  when: APP_VERSION is defined
