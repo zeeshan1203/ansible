@@ -34,7 +34,7 @@
 
 - name: Copy Extracted Directory
   ansible.builtin.copy:
-    src: /usr/share/nginx/frontend-main/static/
+    src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html/
     remote_src: yes
   when: COMPONENT == "frontend"
