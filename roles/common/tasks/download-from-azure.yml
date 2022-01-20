@@ -1,3 +1,12 @@
+- name: Check AZ Cli
+  stat:
+    path: /bin/az
+  register: azcheck
+
+- name: debug
+  debug:
+    msg: "{{azcheck}}"
+
 - name: Setup Azure Cli
   block:
     - name: Setup AZ rpm key
