@@ -12,7 +12,7 @@
 
     - name: Install Az Cli
       yum:
-        name: az
+        name: azure-cli
         state: present
 
     - name: Install Az Extention
