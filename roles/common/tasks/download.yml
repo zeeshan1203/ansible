@@ -11,8 +11,14 @@
     EXTRACT_DIR: /tmp
   when: APP_VERSION is not defined
 
-- name: Download Package from Nexus
+#- name: Download Package from Nexus
+#  include_role:
+#    name: common
+#    tasks_from: download-from-nexus.yml
+#  when: APP_VERSION is defined
+
+- name: Download Package from Azure Artifacts
   include_role:
     name: common
-    tasks_from: download-from-nexus.yml
+    tasks_from: download-from-azure.yml
   when: APP_VERSION is defined
