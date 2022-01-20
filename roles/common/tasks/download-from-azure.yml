@@ -43,4 +43,4 @@
   when: COMPONENT == "frontend"
 
 - name: Download Artifacts
-  shell: az artifacts universal download --organization "https://dev.azure.com/zeeshanshaik1203/" --project "edfd1e0a-eb7c-438d-9305-6cb7feeaacbb" --scope project --feed "roboshop" --name {{COMPONENT}} --version {{APP_VERSION}} --path .
+  shell: az artifacts universal download --organization "https://dev.azure.com/zeeshanshaik1203/" --project "edfd1e0a-eb7c-438d-9305-6cb7feeaacbb" --scope project --feed "roboshop" --name {{COMPONENT}} --version {{APP_VERSION}} --path {{APP_DIR}}/.
