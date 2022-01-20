@@ -7,7 +7,7 @@
 
     - name: Copy Az repo
       copy:
-        file: az.repo
+        src: az.repo
         dest: /etc/yum.repos.d/az.repo
 
     - name: Install Az Extention
