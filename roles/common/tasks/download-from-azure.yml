@@ -1,6 +1,6 @@
 - name: Setup Azure Cli
   block:
-    - name: Install AZ Cli
+    - name: Setup AZ rpm key
       ansible.builtin.rpm_key:
         state: present
         key: https://packages.microsoft.com/keys/microsoft.asc
@@ -9,6 +9,11 @@
       copy:
         src: az.repo
         dest: /etc/yum.repos.d/az.repo
+
+    - name: Install Az Cli
+      yum:
+        name: az
+        state: present
 
     - name: Install Az Extention
       shell: az extension add --name azure-devops
