@@ -34,6 +34,7 @@
     state: restarted
     name: nginx
     enabled: yes
+  ignore_errors: true
 
 - name: Setup Filebeat
   include_role:
