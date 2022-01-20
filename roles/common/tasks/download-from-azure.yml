@@ -3,11 +3,8 @@
     path: /bin/az
   register: azcheck
 
-- name: debug
-  debug:
-    msg: "{{azcheck}}"
-
 - name: Setup Azure Cli
+  when: azcheck.stat.exists is false
   block:
     - name: Setup AZ rpm key
       ansible.builtin.rpm_key:
