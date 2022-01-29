@@ -28,9 +28,13 @@ output.elasticsearch:
 
 {% if not IS_STRUCTURED %}
 output.logstash:
+{% if ENV == "prod" %}
+  hosts: ["172.31.30.220:5045"]
+{% endif %}
+{% if ENV == "dev" %}
   hosts: ["172.31.30.220:5044"]
 {% endif %}
-
+{% endif %}
 
 filebeat.config.modules:
   path: ${path.config}/modules.d/*.yml
